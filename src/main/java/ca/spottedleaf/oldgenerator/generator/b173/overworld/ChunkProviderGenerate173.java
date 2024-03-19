@@ -522,7 +522,7 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
             k2 = k + this.random.nextInt(16) + 8;
             i3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             l2 = l + this.random.nextInt(16) + 8;
-            (new WorldGenFlowers173(BlockConstants.DANDELION)).populate(blockAccess, this.random, k2, i3, l2);
+            (new WorldGenFlowers173(BlockConstants.WARPED_FUNGUS)).populate(blockAccess, this.random, k2, i3, l2);
         }
 
         byte b1 = 0;
@@ -579,7 +579,7 @@ public class ChunkProviderGenerate173 implements OldChunkGenerator {
             k2 = k + this.random.nextInt(16) + 8;
             i3 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             l2 = l + this.random.nextInt(16) + 8;
-            (new WorldGenFlowers173(BlockConstants.POPPY)).populate(blockAccess, this.random, k2, i3, l2);
+            (new WorldGenFlowers173(BlockConstants.CRIMSON_FUNGUS)).populate(blockAccess, this.random, k2, i3, l2);
         }
 
         if (this.random.nextInt(4) == 0) {

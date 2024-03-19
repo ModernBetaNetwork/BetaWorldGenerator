@@ -49,9 +49,9 @@ public final class BlockConstants {
     public static final BlockData DIAMOND_ORE = Material.DIAMOND_ORE.createBlockData();
     public static final BlockData LAPIS_ORE = Material.LAPIS_ORE.createBlockData();
     public static final BlockData EMERALD_ORE = Material.EMERALD_ORE.createBlockData();
-    public static final BlockData DANDELION = Material.DANDELION.createBlockData();
+    public static final BlockData WARPED_FUNGUS = Material.WARPED_FUNGUS.createBlockData();
     public static final BlockData DEAD_BUSH = Material.DEAD_BUSH.createBlockData();
-    public static final BlockData POPPY = Material.POPPY.createBlockData();
+    public static final BlockData CRIMSON_FUNGUS = Material.CRIMSON_FUNGUS.createBlockData();
     public static final BlockData BROWN_MUSHROOM = Material.BROWN_MUSHROOM.createBlockData();
     public static final BlockData RED_MUSHROOM = Material.RED_MUSHROOM.createBlockData();
     public static final BlockData SNOW = Material.SNOW.createBlockData();
@@ -180,8 +180,8 @@ public final class BlockConstants {
 
     public static final EnumSet<Material> FLOWERS = EnumSet.noneOf(Material.class);
     static {
-        FLOWERS.add(Material.DANDELION);
-        FLOWERS.add(Material.POPPY);
+        FLOWERS.add(Material.WARPED_FUNGUS);
+        FLOWERS.add(Material.CRIMSON_FUNGUS);
         FLOWERS.add(Material.BLUE_ORCHID);
         FLOWERS.add(Material.ALLIUM);
         FLOWERS.add(Material.AZURE_BLUET);

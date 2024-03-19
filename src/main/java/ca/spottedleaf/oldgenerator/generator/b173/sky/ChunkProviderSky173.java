@@ -460,14 +460,14 @@ public class ChunkProviderSky173 implements OldChunkGenerator {
             j2 = k + this.random.nextInt(16) + 8;
             k2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             l2 = l + this.random.nextInt(16) + 8;
-            (new WorldGenFlowers173(BlockConstants.DANDELION)).populate(blockAccess, this.random, j2, k2, l2);
+            (new WorldGenFlowers173(BlockConstants.WARPED_FUNGUS)).populate(blockAccess, this.random, j2, k2, l2);
         }
 
         if (this.random.nextInt(2) == 0) {
             i2 = k + this.random.nextInt(16) + 8;
             j2 = this.random.nextInt(blockAccess.getMaxHeight() + 1 - blockAccess.getMinHeight()) + blockAccess.getMinHeight();
             k2 = l + this.random.nextInt(16) + 8;
-            (new WorldGenFlowers173(BlockConstants.POPPY)).populate(blockAccess, this.random, i2, j2, k2);
+            (new WorldGenFlowers173(BlockConstants.CRIMSON_FUNGUS)).populate(blockAccess, this.random, i2, j2, k2);
         }
 
         if (this.random.nextInt(4) == 0) {
