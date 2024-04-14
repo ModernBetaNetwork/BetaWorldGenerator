@@ -21,11 +21,13 @@ public final class WorldBlockAccess implements BlockAccess {
 
     @Override
     public void setType(final int x, final int y, final int z, final Material material) {
+        if (this.outsideBuildHeightRange(y)) return;
         this.world.getBlockAt(x, y, z).setType(material);
     }
 
     @Override
     public void setType(final int x, final int y, final int z, final Material material, final boolean applyPhysics) {
+        if (this.outsideBuildHeightRange(y)) return;
         this.world.getBlockAt(x, y, z).setType(material, applyPhysics);
     }
 
@@ -36,11 +38,13 @@ public final class WorldBlockAccess implements BlockAccess {
 
     @Override
     public void setBlockData(final int x, final int y, final int z, final BlockData data) {
+        if (this.outsideBuildHeightRange(y)) return;
         this.world.getBlockAt(x, y, z).setBlockData(data);
     }
 
     @Override
     public void setBlockData(final int x, final int y, final int z, final BlockData data, final boolean applyPhysics) {
+        if (this.outsideBuildHeightRange(y)) return;
         this.world.getBlockAt(x, y, z).setBlockData(data, applyPhysics);
     }
 
