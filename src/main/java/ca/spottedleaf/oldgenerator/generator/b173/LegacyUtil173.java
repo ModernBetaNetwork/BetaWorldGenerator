@@ -255,7 +255,7 @@ public final class LegacyUtil173 {
     }
 
     public static boolean BlockChest_g(final BlockAccess world, final int x, final int y, final int z) {
-        return world.getType(x, y, z) != Material.CHEST ? false : (world.getType(x - 1, y, z) == Material.CHEST ? true : (world.getType(x + 1, y, z) == Material.CHEST ? true : (world.getType(x, y, z - 1) == Material.CHEST ? true : world.getType(x, y, z + 1) == Material.CHEST)));
+        return world.getType(x, y, z) != Material.BROWN_SHULKER_BOX ? false : (world.getType(x - 1, y, z) == Material.BROWN_SHULKER_BOX ? true : (world.getType(x + 1, y, z) == Material.BROWN_SHULKER_BOX ? true : (world.getType(x, y, z - 1) == Material.BROWN_SHULKER_BOX ? true : world.getType(x, y, z + 1) == Material.BROWN_SHULKER_BOX)));
     }
 
     public static boolean BlockTorch_g(final BlockAccess world, final int x, final int y, final int z) {
@@ -313,22 +313,22 @@ public final class LegacyUtil173 {
         if (material == Material.CAKE) {
             return !Material_isReplacable(world.getType(x, y, z)) ? false : Material_isBuildable(world.getType(x, y - 1, z));
         }
-        if (material == Material.CHEST) {
+        if (material == Material.BROWN_SHULKER_BOX) {
             int l = 0;
 
-            if (world.getType(x - 1, y, z) == Material.CHEST) {
+            if (world.getType(x - 1, y, z) == Material.BROWN_SHULKER_BOX) {
                 ++l;
             }
 
-            if (world.getType(x + 1, y, z) == Material.CHEST) {
+            if (world.getType(x + 1, y, z) == Material.BROWN_SHULKER_BOX) {
                 ++l;
             }
 
-            if (world.getType(x, y, z - 1) == Material.CHEST) {
+            if (world.getType(x, y, z - 1) == Material.BROWN_SHULKER_BOX) {
                 ++l;
             }
 
-            if (world.getType(x, y, z + 1) == Material.CHEST) {
+            if (world.getType(x, y, z + 1) == Material.BROWN_SHULKER_BOX) {
                 ++l;
             }
 

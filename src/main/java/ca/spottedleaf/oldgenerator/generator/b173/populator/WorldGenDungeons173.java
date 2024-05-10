@@ -3,11 +3,17 @@ package ca.spottedleaf.oldgenerator.generator.b173.populator;
 import ca.spottedleaf.oldgenerator.generator.b173.LegacyUtil173;
 import ca.spottedleaf.oldgenerator.util.BlockConstants;
 import ca.spottedleaf.oldgenerator.world.BlockAccess;
+import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Chest;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.CreatureSpawner;
+import org.bukkit.block.ShulkerBox;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.Directional;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
+
 import java.util.Random;
 
 public class WorldGenDungeons173 extends WorldGenerator173 {
@@ -95,14 +101,17 @@ public class WorldGenDungeons173 extends WorldGenerator173 {
                                 }
 
                                 if (k2 == 1) {
-                                    world.setBlockData(i2, centerY, j2, BlockConstants.CHEST, false);
-                                    Chest tileentitychest = (Chest)world.getBlockState(i2, centerY, j2);
+
+                                    BlockData chest = BlockConstants.CHEST;
+                                    ((Directional) chest).setFacing(getChestDirection(new Vector(centerX, centerY, centerZ), new Vector(i2, centerY, j2)));
+                                    world.setBlockData(i2, centerY, j2, chest, false);
+                                    ShulkerBox tileentitychest = (ShulkerBox)world.getBlockState(i2, centerY, j2);
 
                                     for (int l2 = 0; l2 < 8; ++l2) {
                                         ItemStack itemstack = this.getRandomItem(random);
 
                                         if (itemstack != null) {
-                                            tileentitychest.getBlockInventory().setItem(random.nextInt(tileentitychest.getBlockInventory().getSize()), itemstack);
+                                            tileentitychest.getInventory().setItem(random.nextInt(tileentitychest.getInventory().getSize()), itemstack);
                                         }
                                     }
                                     break label204;
@@ -127,6 +136,28 @@ public class WorldGenDungeons173 extends WorldGenerator173 {
             return true;
         } else {
             return false;
+        }
+    }
+
+    private BlockFace getChestDirection(Vector spawnerLocation, Vector chestLocation)
+    {
+        Vector direction = chestLocation.subtract(spawnerLocation).normalize();
+
+        // Calculate the angle between the direction vector and each cardinal direction
+        double angleNorth = Math.abs(direction.angle(new Vector(0, 0, -1)));
+        double angleEast = Math.abs(direction.angle(new Vector(1, 0, 0)));
+        double angleSouth = Math.abs(direction.angle(new Vector(0, 0, 1)));
+        double angleWest = Math.abs(direction.angle(new Vector(-1, 0, 0)));
+
+        // Determine the facing direction based on the smallest angle
+        if (angleNorth < angleEast && angleNorth < angleSouth && angleNorth < angleWest) {
+            return BlockFace.SOUTH;
+        } else if (angleEast < angleNorth && angleEast < angleSouth && angleEast < angleWest) {
+            return BlockFace.WEST;
+        } else if (angleSouth < angleNorth && angleSouth < angleEast && angleSouth < angleWest) {
+            return BlockFace.NORTH;
+        } else {
+            return BlockFace.EAST;
         }
     }
 

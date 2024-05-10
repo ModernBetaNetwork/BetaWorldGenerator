@@ -32,7 +32,7 @@ public final class BlockConstants {
     public static final BlockData SHORT_GRASS = Material.SHORT_GRASS.createBlockData();
     public static final BlockData CLAY = Material.CLAY.createBlockData();
     public static final BlockData SPAWNER = Material.SPAWNER.createBlockData();
-    public static final BlockData CHEST = Material.CHEST.createBlockData();
+    public static final BlockData CHEST = Material.BROWN_SHULKER_BOX.createBlockData();
     public static final BlockData MOSSY_COBBLESTONE = Material.MOSSY_COBBLESTONE.createBlockData();
     public static final BlockData COBBLESTONE = Material.COBBLESTONE.createBlockData();
     public static final BlockData SUGAR_CANE = Material.SUGAR_CANE.createBlockData();
