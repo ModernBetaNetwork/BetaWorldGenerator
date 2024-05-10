@@ -3,7 +3,6 @@ package ca.spottedleaf.oldgenerator.generator.b173.populator;
 import ca.spottedleaf.oldgenerator.generator.b173.LegacyUtil173;
 import ca.spottedleaf.oldgenerator.util.BlockConstants;
 import ca.spottedleaf.oldgenerator.world.BlockAccess;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.CreatureSpawner;
@@ -141,23 +140,23 @@ public class WorldGenDungeons173 extends WorldGenerator173 {
 
     private BlockFace getChestDirection(Vector spawnerLocation, Vector chestLocation)
     {
+        // Calculate the angle between the direction vector and each direction and find the smallest one
         Vector direction = chestLocation.subtract(spawnerLocation).normalize();
-
-        // Calculate the angle between the direction vector and each cardinal direction
-        double angleNorth = Math.abs(direction.angle(new Vector(0, 0, -1)));
-        double angleEast = Math.abs(direction.angle(new Vector(1, 0, 0)));
-        double angleSouth = Math.abs(direction.angle(new Vector(0, 0, 1)));
-        double angleWest = Math.abs(direction.angle(new Vector(-1, 0, 0)));
+        double angleNorth = Math.abs(direction.angle(new Vector(0, 0, 1)));
+        double angleEast = Math.abs(direction.angle(new Vector(-1, 0, 0)));
+        double angleSouth = Math.abs(direction.angle(new Vector(0, 0, -1)));
+        double angleWest = Math.abs(direction.angle(new Vector(1, 0, 0)));
+        double smallestAngle = Math.min(angleNorth, Math.min(angleEast, Math.min(angleSouth, angleWest)));
 
         // Determine the facing direction based on the smallest angle
-        if (angleNorth < angleEast && angleNorth < angleSouth && angleNorth < angleWest) {
-            return BlockFace.SOUTH;
-        } else if (angleEast < angleNorth && angleEast < angleSouth && angleEast < angleWest) {
-            return BlockFace.WEST;
-        } else if (angleSouth < angleNorth && angleSouth < angleEast && angleSouth < angleWest) {
+        if (angleNorth == smallestAngle) {
             return BlockFace.NORTH;
-        } else {
+        } else if (angleEast == smallestAngle) {
             return BlockFace.EAST;
+        } else if (angleSouth == smallestAngle) {
+            return BlockFace.SOUTH;
+        } else {
+            return BlockFace.WEST;
         }
     }
 
