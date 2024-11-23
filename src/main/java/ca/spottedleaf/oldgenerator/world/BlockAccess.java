@@ -31,5 +31,16 @@ public interface BlockAccess {
 
     public int getHighestBlockYAt(final int x, final int z, final HeightMap heightMap);
 
+    default int getTotalHeight() {
+        return this.getMaxHeight() - this.getMinHeight() + 1;
+    }
+
+    default boolean outsideBuildHeightRange(int y)
+    {
+        return y < 0 || y > getMaxHeight();
+    }
+
+    public int getMinHeight();
+
     public int getMaxHeight();
 }

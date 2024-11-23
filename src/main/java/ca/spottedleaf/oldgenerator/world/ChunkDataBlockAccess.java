@@ -30,12 +30,14 @@ public final class ChunkDataBlockAccess implements BlockAccess {
     @Override
     public void setType(final int x, final int y, final int z, final Material material) {
         checkCoordinates(x, y, z);
+        if (this.outsideBuildHeightRange(y)) return;
         this.chunkData.setBlock(x, y, z, material);
     }
 
     @Override
     public void setType(final int x, final int y, final int z, final Material material, final boolean applyPhysics) {
         checkCoordinates(x, y, z);
+        if (this.outsideBuildHeightRange(y)) return;
         this.chunkData.setBlock(x, y, z, material);
     }
 
@@ -48,12 +50,14 @@ public final class ChunkDataBlockAccess implements BlockAccess {
     @Override
     public void setBlockData(final int x, final int y, final int z, final BlockData data) {
         checkCoordinates(x, y, z);
+        if (this.outsideBuildHeightRange(y)) return;
         this.chunkData.setBlock(x, y, z, data);
     }
 
     @Override
     public void setBlockData(final int x, final int y, final int z, final BlockData data, final boolean applyPhysics) {
         checkCoordinates(x, y, z);
+        if (this.outsideBuildHeightRange(y)) return;
         this.chunkData.setBlock(x, y, z, data);
     }
 
@@ -88,7 +92,12 @@ public final class ChunkDataBlockAccess implements BlockAccess {
     }
 
     @Override
+    public int getMinHeight() {
+        return 0;
+    }
+
+    @Override
     public int getMaxHeight() {
-        return this.chunkData.getMaxHeight();
+        return 127;
     }
 }

@@ -5,3 +5,4 @@ load: STARTUP
 api-version: "1.20"
 authors: [Spottedleaf]
 description: Provides Beta 1.7.3 world generator for modern versions of Minecraft.
+folia-supported: true

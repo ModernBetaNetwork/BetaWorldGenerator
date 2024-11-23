@@ -10,9 +10,6 @@ import java.util.EnumMap;
 import java.util.EnumSet;
 
 public final class LegacyUtil173 {
-
-    public static final int WORLD_HEIGHT = 128;
-
     // Source code for b173 server can be found here: https://github.com/Bukkit/mc-dev/tree/1a792ed860ebe2c6d4c40c52f3bc7b9e0789ca23
 
     // NOTE: The following methods are supposed to mirror beta 1.7.3 behaviour! They are not guaranteed to mirror
@@ -258,7 +255,7 @@ public final class LegacyUtil173 {
     }
 
     public static boolean BlockChest_g(final BlockAccess world, final int x, final int y, final int z) {
-        return world.getType(x, y, z) != Material.CHEST ? false : (world.getType(x - 1, y, z) == Material.CHEST ? true : (world.getType(x + 1, y, z) == Material.CHEST ? true : (world.getType(x, y, z - 1) == Material.CHEST ? true : world.getType(x, y, z + 1) == Material.CHEST)));
+        return world.getType(x, y, z) != Material.BROWN_SHULKER_BOX ? false : (world.getType(x - 1, y, z) == Material.BROWN_SHULKER_BOX ? true : (world.getType(x + 1, y, z) == Material.BROWN_SHULKER_BOX ? true : (world.getType(x, y, z - 1) == Material.BROWN_SHULKER_BOX ? true : world.getType(x, y, z + 1) == Material.BROWN_SHULKER_BOX)));
     }
 
     public static boolean BlockTorch_g(final BlockAccess world, final int x, final int y, final int z) {
@@ -281,7 +278,7 @@ public final class LegacyUtil173 {
 
     public static boolean BlockFlower_f(final BlockAccess world, final int x, final int y, final int z, final Material type) {
         if (type == Material.RED_MUSHROOM || type == Material.BROWN_MUSHROOM) {
-            return y >= 0 && y < WORLD_HEIGHT ? world.getLightLevel(x, y, z) < 13 && BlockFlower_c(type, world.getType(x, y - 1, z)) : false;
+            return y >= world.getMinHeight() && y < (world.getMaxHeight() + 1) ? world.getLightLevel(x, y, z) < 13 && BlockFlower_c(type, world.getType(x, y - 1, z)) : false;
         }
 
         // default
@@ -316,22 +313,22 @@ public final class LegacyUtil173 {
         if (material == Material.CAKE) {
             return !Material_isReplacable(world.getType(x, y, z)) ? false : Material_isBuildable(world.getType(x, y - 1, z));
         }
-        if (material == Material.CHEST) {
+        if (material == Material.BROWN_SHULKER_BOX) {
             int l = 0;
 
-            if (world.getType(x - 1, y, z) == Material.CHEST) {
+            if (world.getType(x - 1, y, z) == Material.BROWN_SHULKER_BOX) {
                 ++l;
             }
 
-            if (world.getType(x + 1, y, z) == Material.CHEST) {
+            if (world.getType(x + 1, y, z) == Material.BROWN_SHULKER_BOX) {
                 ++l;
             }
 
-            if (world.getType(x, y, z - 1) == Material.CHEST) {
+            if (world.getType(x, y, z - 1) == Material.BROWN_SHULKER_BOX) {
                 ++l;
             }
 
-            if (world.getType(x, y, z + 1) == Material.CHEST) {
+            if (world.getType(x, y, z + 1) == Material.BROWN_SHULKER_BOX) {
                 ++l;
             }
 
@@ -341,7 +338,7 @@ public final class LegacyUtil173 {
             return !World_e(world, x, y - 1, z) ? false : Material_isReplacable(world.getType(x, y, z));
         }
         if (BlockConstants.isDoor(material)) {
-            return y >= (WORLD_HEIGHT - 1) ? false : World_e(world, x, y - 1, z) && Material_isReplacable(world.getType(x, y, z)) && Material_isReplacable(world.getType(x, y + 1, z));
+            return y >= world.getMaxHeight() ? false : World_e(world, x, y - 1, z) && Material_isReplacable(world.getType(x, y, z)) && Material_isReplacable(world.getType(x, y + 1, z));
         }
         if (material == Material.FIRE) {
             if (World_e(world, x, y - 1, z)) {

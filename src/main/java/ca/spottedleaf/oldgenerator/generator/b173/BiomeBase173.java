@@ -19,7 +19,6 @@ public enum BiomeBase173 {
             return random.nextInt(3) == 0 ? new WorldGenBigTree173() : new WorldGenTrees173();
         }
     },
-    SWAMPLAND(Biome.SWAMP),
     SEASONAL_FOREST(Biome.FOREST),
     FOREST(Biome.FOREST) {
         @Override
@@ -68,7 +67,7 @@ public enum BiomeBase173 {
 
     public static BiomeBase173 getByRainTempUncached(float f, float f1) {
         f1 *= f;
-        return f < 0.1F ? TUNDRA : (f1 < 0.2F ? (f < 0.5F ? TUNDRA : (f < 0.95F ? SAVANNA : DESERT)) : (f1 > 0.5F && f < 0.7F ? SWAMPLAND : (f < 0.5F ? TAIGA : (f < 0.97F ? (f1 < 0.35F ? SHRUBLAND : FOREST) : (f1 < 0.45F ? PLAINS : (f1 < 0.9F ? SEASONAL_FOREST : RAINFOREST))))));
+        return f < 0.1F ? TUNDRA : (f1 < 0.2F ? (f < 0.5F ? TUNDRA : (f < 0.95F ? SAVANNA : DESERT)) : (f1 > 0.5F && f < 0.7F ? FOREST : (f < 0.5F ? TAIGA : (f < 0.97F ? (f1 < 0.35F ? SHRUBLAND : FOREST) : (f1 < 0.45F ? PLAINS : (f1 < 0.9F ? SEASONAL_FOREST : RAINFOREST))))));
     }
 
     public static BiomeBase173 a(double temp, double rain) {

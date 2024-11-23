@@ -1,3 +1,5 @@
+This fork is intended for personal use. I am working on a project that needs flowers to not be randomly offset so I am replacing them with crimson/warped fungus (and retexturing them) since those don't offset. 
+
 OldGenerator
 ==
 Spigot plugin for adding Beta 1.7.3 generation to modern versions of

@@ -68,11 +68,13 @@ public final class LimitedBlockAccess implements BlockAccess {
 
     @Override
     public void setType(final int x, final int y, final int z, final Material material) {
+        if (this.outsideBuildHeightRange(y)) return;
         this.getChunk(x >> 4, z >> 4).setBlock(x, y, z, material);
     }
 
     @Override
     public void setType(final int x, final int y, final int z, final Material material, final boolean applyPhysics) {
+        if (this.outsideBuildHeightRange(y)) return;
         this.getChunk(x >> 4, z >> 4).setBlock(x, y, z, material);
     }
 
@@ -83,11 +85,13 @@ public final class LimitedBlockAccess implements BlockAccess {
 
     @Override
     public void setBlockData(final int x, final int y, final int z, final BlockData data) {
+        if (this.outsideBuildHeightRange(y)) return;
         this.getChunk(x >> 4, z >> 4).setBlock(x, y, z, data);
     }
 
     @Override
     public void setBlockData(final int x, final int y, final int z, final BlockData data, final boolean applyPhysics) {
+        if (this.outsideBuildHeightRange(y)) return;
         this.getChunk(x >> 4, z >> 4).setBlock(x, y, z, data);
     }
 
@@ -122,8 +126,13 @@ public final class LimitedBlockAccess implements BlockAccess {
     }
 
     @Override
+    public int getMinHeight() {
+        return 0;
+    }
+
+    @Override
     public int getMaxHeight() {
-        return this.chunks[0].getMaxHeight();
+        return 127;
     }
 
     @Override
