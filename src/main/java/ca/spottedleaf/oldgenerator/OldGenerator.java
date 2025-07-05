@@ -3,7 +3,6 @@ package ca.spottedleaf.oldgenerator;
 import ca.spottedleaf.oldgenerator.generator.b173.Beta173ChunkGenerator;
 import ca.spottedleaf.oldgenerator.generator.b173.listener.SkyGenerationListener;
 import ca.spottedleaf.oldgenerator.listener.LegacyPopulateHack;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,16 +12,10 @@ public final class OldGenerator extends JavaPlugin {
     @Override
     public void onLoad() {}
 
-    protected void setupMetrics() {
-        final Metrics metrics = new Metrics(this, 7761);
-        // TODO custom charts?
-    }
-
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(new LegacyPopulateHack(), this);
         Bukkit.getPluginManager().registerEvents(new SkyGenerationListener(this), this);
-        this.setupMetrics();
     }
 
     @Override
