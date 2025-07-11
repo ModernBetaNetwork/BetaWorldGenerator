@@ -33,7 +33,7 @@ public final class Beta173ChunkGenerator extends ChunkGenerator {
         }
 
         if (ret == null) {
-            ret = new ChunkProviderGenerate173(world, world.getSeed());
+            ret = new ChunkProviderGenerate173(world, world.getSeed(), 1589067560120L /* super ultra mega secret seed */);
         }
 
         return ret;
