@@ -113,6 +113,7 @@ public final class Beta173ChunkGenerator extends ChunkGenerator {
     public ChunkData generateChunkData(World world, Random random, int x, int z, BiomeGrid biome) {
         ChunkData ret = this.createChunkData(world);
         switch (world.getEnvironment()) {
+            case CUSTOM:
             case NORMAL: {
                 if (!this.isSkyLands) {
                     ChunkProviderGenerate173 generator = this.getOverworldGenerator(world);
@@ -148,6 +149,7 @@ public final class Beta173ChunkGenerator extends ChunkGenerator {
 
     public void runPopulators(World world, Chunk chunk) {
         switch (world.getEnvironment()) {
+            case CUSTOM:
             case NORMAL: {
                 if (!this.isSkyLands) {
                     ChunkProviderGenerate173 generator = this.getOverworldGenerator(world);
@@ -199,7 +201,7 @@ public final class Beta173ChunkGenerator extends ChunkGenerator {
 
     @Override
     public boolean canSpawn(World world, int x, int z) {
-        if (world.getEnvironment() == World.Environment.NORMAL) {
+        if (world.getEnvironment() == World.Environment.NORMAL || world.getEnvironment() == World.Environment.CUSTOM) {
             int y;
             for (y = 63; !world.getBlockAt(x, y + 1, z).isEmpty(); ++y) {}
 
